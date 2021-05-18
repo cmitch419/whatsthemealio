@@ -66,8 +66,8 @@ tasyballs_ingredients = [
   }
 ]
 
-amchopsuey_recipe = Recipe.find_by(slug: 'american-chop-suey')
-tastyballs_recipe = Recipe.find_by(slug: 'tasty-balls')
+amchopsuey_recipe = Recipe.find(1)
+tastyballs_recipe = Recipe.find(2)
 
 amchopsuey_ingredients.each do |i|
   puts i[:name]

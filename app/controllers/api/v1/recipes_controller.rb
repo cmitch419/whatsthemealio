@@ -9,7 +9,7 @@ module Api
       end
 
       def show
-        recipe = Recipe.find_by(slug: params[:slug])
+        recipe = Recipe.find(params[:id])
 
         render json: RecipeSerializer.new(recipe, options).serializable_hash.to_json
       end
@@ -25,7 +25,7 @@ module Api
       end
 
       def update
-        recipe = Recipe.find_by(slug: params[:slug])
+        recipe = Recipe.find(params[:id])
 
         if recipe.update(recipe_params)
           render json: RecipeSerializer.new(recipe, options).serializable_hash.to_json
@@ -35,7 +35,7 @@ module Api
       end
 
       def destroy
-        recipe = Recipe.find_by(slug: params[:slug])
+        recipe = Recipe.find(params[:id])
 
         if recipe.destroy
           head :no_content

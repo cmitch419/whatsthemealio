@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :recipes, param: :slug
-      resources :ingredients, param: :slug
+      resources :recipes, param: :id
+      resources :ingredients, param: :id
     end
   end
 
