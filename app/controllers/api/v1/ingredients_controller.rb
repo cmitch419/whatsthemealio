@@ -1,10 +1,7 @@
 module Api
   module V1
     class IngredientsController < ApplicationController
-      # Protection against cross-site request forgery (CSRF)
-      # OWASP: https://owasp.org/www-community/attacks/csrf
       protect_from_forgery with: :null_session
-      
       def index
         ingredients = Ingredient.all
 
@@ -12,7 +9,7 @@ module Api
       end
 
       def show
-        ingredient = Ingredient.find(params[:id])
+        ingredient = Ingredient.find_by id:params[:id]
 
         render json: IngredientSerializer.new(ingredient, options).serializable_hash.to_json
       end
@@ -26,9 +23,19 @@ module Api
           render json: { error: ingredient.errors.messages }, status: 422
         end
       end
-      
+
+      def update
+        ingredient = Ingredient.find_by id:params[:id]
+
+        if ingredient.update(ingredient_params)
+          render json: IngredientSerializer.new(ingredient, options).serializable_hash.to_json
+        else
+          render json: { error: ingredient.errors.messages }, status: 422
+        end
+      end
+
       def destroy
-        ingredient = Ingredient.find(params[:id])
+        ingredient = Ingredient.find_by id:params[:id]
 
         if ingredient.destroy
           head :no_content
@@ -38,7 +45,7 @@ module Api
       end
 
       private
-
+      
       def ingredient_params
         params.require(:ingredient).permit(:name, :description)
       end
@@ -46,6 +53,7 @@ module Api
       def options
         @options ||= { include: %i[recipe_ingredients] }
       end
+
     end
   end
 end
