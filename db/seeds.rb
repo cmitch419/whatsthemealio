@@ -3,7 +3,7 @@ recipes = Recipe.create([
     name: "American chop suey"
   },
   {
-    name: "Tasty balls"
+    name: "Tasty meatballs"
   }
 ])
 
@@ -27,52 +27,51 @@ ingredients = Ingredient.create([
 
 amchopsuey_ingredients = [
   {
-    ingredient: Ingredient.find_by(slug: 'green-pepper'),
+    ingredient: Ingredient.find(1),
     amount: 1,
     unit: "pepper"
   },
   {
-    ingredient: Ingredient.find_by(slug: 'ground-turkey'),
+    ingredient: Ingredient.find(2),
     amount: 1,
     unit: "pound"
   },
   {
-    ingredient: Ingredient.find_by(slug: 'italian-seasoning'),
+    ingredient: Ingredient.find(3),
     amount: 2,
     unit: "teaspoon"
   },
   {
-    ingredient: Ingredient.find_by(slug: 'elbow-macaroni'),
+    ingredient: Ingredient.find(4),
     amount: 1,
     unit: "pound"
   }
 ]
 
-tasyballs_ingredients = [
+meatballs_ingredients = [
   {
-    ingredient: Ingredient.find_by(slug: 'ground-turkey'),
+    ingredient: Ingredient.find(2),
     amount: 1,
     unit: "pound"
   },
   {
-    ingredient: Ingredient.find_by(slug: 'italian-seasoning'),
+    ingredient: Ingredient.find(3),
     amount: 2,
     unit: "teaspoon"
   },
   {
-    ingredient: Ingredient.find_by(slug: 'chili-sauce'),
+    ingredient: Ingredient.find(5),
     amount: 1,
     unit: "bottle"
   }
 ]
 
 amchopsuey_recipe = Recipe.find(1)
-tastyballs_recipe = Recipe.find(2)
+meatballs_recipe = Recipe.find(2)
 
 amchopsuey_ingredients.each do |i|
-  puts i[:name]
   RecipeIngredient.create(amount: i[:amount], unit: i[:unit], recipe: amchopsuey_recipe, ingredient: i[:ingredient])
 end
-tasyballs_ingredients.each do |i|
-  RecipeIngredient.create(amount: i[:amount], unit: i[:unit], recipe: tastyballs_recipe, ingredient: i[:ingredient])
+meatballs_ingredients.each do |i|
+  RecipeIngredient.create(amount: i[:amount], unit: i[:unit], recipe: meatballs_recipe, ingredient: i[:ingredient])
 end

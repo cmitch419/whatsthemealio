@@ -1,6 +1,8 @@
 module Api
   module V1
     class IngredientsController < ApplicationController
+      # Protection against cross-site request forgery (CSRF)
+      # OWASP: https://owasp.org/www-community/attacks/csrf
       protect_from_forgery with: :null_session
       
       def index
