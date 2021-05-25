@@ -51,7 +51,7 @@ module Api
       end
 
       def options
-        @options ||= { include: %i[recipe_ingredients] }
+        @options ||= { include: %i[recipes recipe_ingredients] }
       end
 
     end

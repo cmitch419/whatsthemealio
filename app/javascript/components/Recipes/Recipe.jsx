@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom' 
 
 const Recipe = (props) => {
-  console.log(props)
   return (
     <div className="card">
       <div className="recipe-name">{props.attributes.name}</div>

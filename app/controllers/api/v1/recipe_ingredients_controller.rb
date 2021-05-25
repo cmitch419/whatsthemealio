@@ -5,7 +5,7 @@ module Api
       def index
         recipe_ingredients = RecipeIngredient.all
 
-        render json: RecipeIngredientSerializer.new(recipe_ingredients).serializable_hash.to_json
+        render json: RecipeIngredientSerializer.new(recipe_ingredients, options).serializable_hash.to_json
       end
 
       def show
@@ -51,7 +51,7 @@ module Api
       end
 
       def options
-        @options ||= nil
+        @options ||= { include: %i[recipe ingredient] }
       end
 
     end
