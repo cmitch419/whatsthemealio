@@ -38,7 +38,7 @@ module Api
         ingredient = Ingredient.find_by id:params[:id]
 
         if ingredient.destroy
-          head :no_content
+          render json: { status: 200, message: "Success" }
         else
           render json: { error: ingredient.errors.messages }, status: 422
         end

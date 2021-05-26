@@ -38,7 +38,7 @@ module Api
         recipe = Recipe.find(params[:id])
 
         if recipe.destroy
-          head :no_content
+          render json: { status: 200, message: "Success" }
         else
           render json: { error: recipe.errors.messages }, status: 422
         end
@@ -51,7 +51,9 @@ module Api
       end
 
       def options
-        @options ||= { include: %i[ingredients recipe_ingredients] }
+        @options ||= {
+          include: %i[ingredients recipe_ingredients]
+        }
       end
 
     end
