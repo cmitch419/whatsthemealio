@@ -1,27 +1,34 @@
 recipes = Recipe.create([
   {
-    name: "American chop suey"
+    name: "American chop suey",
+    description: "Mommy's comfort food."
   },
   {
-    name: "Tasty meatballs"
+    name: "Tasty meatballs",
+    description: "Easy and delicious."
   }
 ])
 
 ingredients = Ingredient.create([
   {
-    name: "Green pepper"
+    name: "Green pepper",
+    description: "It's a pepper. It's green. It's not spicy."
   },
   {
-    name: "Ground turkey"
+    name: "Ground turkey",
+    description: "Gobble gobble gobble"
   },
   {
-    name: "Italian seasoning"
+    name: "Italian seasoning",
+    description: "Smells like Little Italy in a can."
   },
   {
-    name: "Elbow macaroni"
+    name: "Elbow macaroni",
+    description: "Dry pasta. Can be substituted with kneecap macaroni in a pinch."
   },
   {
-    name: "Chili sauce"
+    name: "Chili sauce",
+    description: "It's like ketchup with an attitude."
   }
 ])
 
