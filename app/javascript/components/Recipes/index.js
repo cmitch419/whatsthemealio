@@ -1,3 +1,7 @@
+import Recipe from './Recipe'
 import Recipes from './Recipes'
 
-export default Recipes
+export {
+  Recipe,
+  Recipes,
+}

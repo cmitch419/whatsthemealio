@@ -1,3 +1,7 @@
-import Ingredients from './Ingredients';
+import Ingredient from './Ingredient'
+import Ingredients from './Ingredients'
 
-export default Ingredients
+export {
+  Ingredient,
+  Ingredients
+}

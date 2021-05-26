@@ -1,13 +1,8 @@
 import React from 'react'
-import {
-  Route,
-  Switch
-} from 'react-router-dom'
-
-import Ingredient from '../components/Ingredient'
-import Ingredients from '../components/Ingredients'
-import Recipe from '../components/Recipe'
-import Recipes from '../components/Recipes'
+import { Route, Switch } from 'react-router-dom'
+import { Ingredient, Ingredients } from './Ingredients'
+import { Recipe, Recipes } from './Recipes'
+import Page404 from './Page404'
 
 const App = () => {
   return (
@@ -16,6 +11,9 @@ const App = () => {
       <Route exact path="/ingredients" component={Ingredients} />
       <Route exact path="/recipes/:id" component={Recipe} />
       <Route exact path="/recipes" component={Recipes} />
+
+      {/* Default to the 404 page */}
+      <Route path="/*" component={Page404} />
     </Switch>
     )
 }

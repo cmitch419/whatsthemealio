@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Ingredient from './Ingredient'
+import { ItemCard } from '../Shared'
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([])
@@ -11,9 +11,13 @@ const Ingredients = () => {
     .catch(resp => console.log(resp))
   }, [ingredients.length])
 
-  const list = ingredients.map( item => {
+  const list = ingredients.map(item => {
     return (
-      <Ingredient key={item.id} id={item.id} attributes={item.attributes} />
+      <ItemCard
+        key={item.id}
+        id={item.id}
+        type={item.type}
+        attributes={item.attributes} />
     )
   })
 
