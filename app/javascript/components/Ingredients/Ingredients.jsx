@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { ItemCard } from '../Shared'
+import { Grid, makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  }
+}));
 
 const Ingredients = () => {
   const [ingredients, setIngredients] = useState([])
+
+  const classes = useStyles();
 
   useEffect(() => {
     axios.get('/api/v1/ingredients.json')
@@ -13,20 +22,21 @@ const Ingredients = () => {
 
   const list = ingredients.map(item => {
     return (
-      <ItemCard
-        key={item.id}
-        id={item.id}
-        type={item.type}
-        attributes={item.attributes} />
+      <Grid key={item.id} item xs>
+        <ItemCard
+          id={item.id}
+          type={item.type}
+          attributes={item.attributes} />
+      </Grid>
     )
   })
 
   return (
-    <>
-      <div className="grid">
+    <div className={classes.root}>
+      <Grid container spacing={2}>
         {list}
-      </div>
-    </>
+      </Grid>
+    </div>
   )
 }
 

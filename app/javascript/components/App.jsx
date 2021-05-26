@@ -13,7 +13,7 @@ const App = () => {
       <Route exact path="/recipes" component={Recipes} />
 
       {/* Default to the 404 page */}
-      <Route path="/*" component={Page404} />
+      <Route path="*" component={Page404} />
     </Switch>
     )
 }
